@@ -44,3 +44,17 @@ def login_view(request):
     else:
         form = LoginForm()
     return render(request, 'core/login.html', {'form': form})
+
+@login_required
+def logout_view(request):
+    logout(request)
+    messages.info(request, 'You have been logged out.')
+    return redirect('login')
+
+# dashboard
+@login_required
+def dashboard(request):
+    context = {
+
+    }
+    return render(request, 'core/dashboard.html', context)
