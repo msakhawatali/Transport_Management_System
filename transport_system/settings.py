@@ -134,7 +134,7 @@ LOGOUT_REDIRECT_URL = 'login'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-DEFAULT_AUTO_FILES = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FILED = 'django.db.models.BigAutoField'
 
 
 # Email

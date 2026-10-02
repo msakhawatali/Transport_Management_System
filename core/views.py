@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.db.models import Sum, Count, Q
 from django.http import JsonResponse
 from django.utils import timezone
-from datetime import timezone
 from decimal import Decimal
 from .models import *
 from .forms import *
@@ -19,12 +18,11 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'Registration successfull! welcome to Transport Management System.')
-
+            messages.success(request, 'Registration successful! Welcome to Transport Management System.')
             return redirect('dashboard')
-        else:
-            form = UserRegistrationForm()
-        return  render(request, 'core/register.html', {'form' : form})
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'core/register.html', {'form': form})
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -32,7 +30,7 @@ def login_view(request):
 
     if request.method == 'POST':
         form = LoginForm(request, data= request.POST)
-        if form.is_vaild():
+        if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
